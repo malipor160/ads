@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.google.android.gms.example.adaptivebannerexample" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+        <activity
+            android:name=".MyActivity"
+            android:label="@string/app_name"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+
+java/admob/AdaptiveBannerExample/app/src/main/res/xml/network_security_config.xml
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <debug-overrides>
+        <trust-anchors>
+            <!-- Trust user added CAs while debuggable only -->
+            <certificates src="user" />
+        </trust-anchors>
+    </debug-overrides>
+</network-security-config>
+
+
+java/admob/AdaptiveBannerExample/app/src/main/res/layout/activity_my.xml
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    tools:context=".MyActivity"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+    android:layout_marginRight="@dimen/activity_horizontal_margin"
+    tools:ignore="MergeRootFrame">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:text="@string/hello_world" />
+
+    <FrameLayout
+        android:id="@+id/ad_view_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
+
+
+
+
+
+java/admob/RewardedInterstitialExample/app/src/main/AndroidManifest.xml
+
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.google.ads.rewardedinterstitialexample">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544~3347511713"/>
+
+        <activity
+            android:exported="true"
+            android:name="com.google.ads.rewardedinterstitialexample.MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+
+
+
+پاداش
+
+
+
+http://schemas.android.com/apk/res/android
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+  <TextView
+      android:id="@+id/timer"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:layout_marginBottom="16dp"
+      android:layout_marginLeft="24dp"
+      android:layout_marginRight="24dp" />
+</LinearLayout>
+
+
+
+پاداش 
+java/admob/RewardedInterstitialExample/app/src/main/res/layout/activity_main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.ads.rewardedinterstitialexample.MainActivity">
+
+    <TextView
+        android:id="@+id/game_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/impossible_game"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/game_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <Button
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@id/timer"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/retry_button_text" />
+
+    <TextView
+        android:id="@+id/coin_count_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
+        android:text="@string/default_coin_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+این جاوا 
+package com.google.ads.rewardedinterstitialexample;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.ads.rewardedinterstitialexample.AdDialogFragment.AdDialogInteractionListener;
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.OnUserEarnedRewardListener;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.rewarded.RewardItem;
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd;
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback;
+
+/** Main Activity. Inflates main activity xml. */
+@SuppressLint("SetTextI18n")
+public class MainActivity extends AppCompatActivity {
+  private static final String AD_UNIT_ID = "ca-app-pub-3940256099942544/5354046379";
+  private static final long COUNTER_TIME = 10;
+  private static final int GAME_OVER_REWARD = 1;
+  private static final String TAG = "MainActivity";
+
+  private int coinCount;
+  private TextView coinCountText;
+  private CountDownTimer countDownTimer;
+  private boolean gameOver;
+  private boolean gamePaused;
+
+  private RewardedInterstitialAd rewardedInterstitialAd;
+  private Button retryButton;
+  private long timeRemaining;
+  boolean isLoadingAds;
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    // Log the Mobile Ads SDK version.
+    Log.d(TAG, "Google Mobile Ads SDK Version: " + MobileAds.getVersion());
+
+    MobileAds.initialize(
+        this,
+        new OnInitializationCompleteListener() {
+          @Override
+          public void onInitializationComplete(InitializationStatus initializationStatus) {
+            loadRewardedInterstitialAd();
+          }
+        });
+
+    // Create the "retry" button, which tries to show a rewarded ad between game plays.
+    retryButton = findViewById(R.id.retry_button);
+    retryButton.setVisibility(View.INVISIBLE);
+    retryButton.setOnClickListener(
+        new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+            startGame();
+          }
+        });
+
+    // Display current coin count to user.
+    coinCountText = findViewById(R.id.coin_count_text);
+    coinCount = 0;
+    coinCountText.setText("Coins: " + coinCount);
+
+    startGame();
+  }
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    pauseGame();
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    if (!gameOver && gamePaused) {
+      resumeGame();
+    }
+  }
+
+  private void pauseGame() {
+    countDownTimer.cancel();
+    gamePaused = true;
+  }
+
+  private void resumeGame() {
+    createTimer(timeRemaining);
+    gamePaused = false;
+  }
+
+  private void loadRewardedInterstitialAd() {
+    if (rewardedInterstitialAd == null) {
+      isLoadingAds = true;
+
+      AdRequest adRequest = new AdRequest.Builder().build();
+      // Use the test ad unit ID to load an ad.
+      RewardedInterstitialAd.load(
+          MainActivity.this,
+          AD_UNIT_ID,
+          adRequest,
+          new RewardedInterstitialAdLoadCallback() {
+            @Override
+            public void onAdLoaded(RewardedInterstitialAd ad) {
+              Log.d(TAG, "onAdLoaded");
+
+              rewardedInterstitialAd = ad;
+              isLoadingAds = false;
+              Toast.makeText(MainActivity.this, "onAdLoaded", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+              Log.d(TAG, "onAdFailedToLoad: " + loadAdError.getMessage());
+
+              // Handle the error.
+              rewardedInterstitialAd = null;
+              isLoadingAds = false;
+              Toast.makeText(MainActivity.this, "onAdFailedToLoad", Toast.LENGTH_SHORT).show();
+            }
+          });
+    }
+  }
+
+  private void addCoins(int coins) {
+    coinCount += coins;
+    coinCountText.setText("Coins: " + coinCount);
+  }
+
+  private void startGame() {
+    // Hide the retry button, load the ad, and start the timer.
+    retryButton.setVisibility(View.INVISIBLE);
+    if (rewardedInterstitialAd != null && !isLoadingAds) {
+      loadRewardedInterstitialAd();
+    }
+    createTimer(COUNTER_TIME);
+    gamePaused = false;
+    gameOver = false;
+  }
+
+  // Create the game timer, which counts down to the end of the level
+  // and shows the "retry" button.
+  private void createTimer(long time) {
+    final TextView textView = findViewById(R.id.timer);
+    if (countDownTimer != null) {
+      countDownTimer.cancel();
+    }
+    countDownTimer =
+        new CountDownTimer(time * 1000, 50) {
+          @Override
+          public void onTick(long millisUnitFinished) {
+            timeRemaining = ((millisUnitFinished / 1000) + 1);
+            textView.setText("seconds remaining: " + timeRemaining);
+          }
+
+          @Override
+          public void onFinish() {
+            textView.setText("You Lose!");
+            addCoins(GAME_OVER_REWARD);
+            retryButton.setVisibility(View.VISIBLE);
+            gameOver = true;
+
+            if (rewardedInterstitialAd == null) {
+              Log.d(TAG, "The rewarded interstitial ad is not ready.");
+              return;
+            }
+
+            RewardItem rewardItem = rewardedInterstitialAd.getRewardItem();
+            int rewardAmount = rewardItem.getAmount();
+            String rewardType = rewardItem.getType();
+
+            Log.d(TAG, "The rewarded interstitial ad is ready.");
+            introduceVideoAd(rewardAmount, rewardType);
+          }
+        };
+    countDownTimer.start();
+  }
+
+  private void introduceVideoAd(int rewardAmount, String rewardType) {
+    AdDialogFragment dialog = AdDialogFragment.newInstance(rewardAmount, rewardType);
+    dialog.setAdDialogInteractionListener(
+        new AdDialogInteractionListener() {
+          @Override
+          public void onShowAd() {
+            Log.d(TAG, "The rewarded interstitial ad is starting.");
+
+            showRewardedVideo();
+          }
+
+          @Override
+          public void onCancelAd() {
+            Log.d(TAG, "The rewarded interstitial ad was skipped before it starts.");
+          }
+        });
+    dialog.show(getSupportFragmentManager(), "AdDialogFragment");
+  }
+
+  private void showRewardedVideo() {
+
+    if (rewardedInterstitialAd == null) {
+      Log.d(TAG, "The rewarded interstitial ad wasn't ready yet.");
+      return;
+    }
+
+    rewardedInterstitialAd.setFullScreenContentCallback(
+        new FullScreenContentCallback() {
+          /** Called when ad showed the full screen content. */
+          @Override
+          public void onAdShowedFullScreenContent() {
+            Log.d(TAG, "onAdShowedFullScreenContent");
+
+            Toast.makeText(MainActivity.this, "onAdShowedFullScreenContent", Toast.LENGTH_SHORT)
+                .show();
+          }
+
+          /** Called when the ad failed to show full screen content. */
+          @Override
+          public void onAdFailedToShowFullScreenContent(AdError adError) {
+            Log.d(TAG, "onAdFailedToShowFullScreenContent: " + adError.getMessage());
+
+            // Don't forget to set the ad reference to null so you
+            // don't show the ad a second time.
+            rewardedInterstitialAd = null;
+            loadRewardedInterstitialAd();
+
+            Toast.makeText(
+                    MainActivity.this, "onAdFailedToShowFullScreenContent", Toast.LENGTH_SHORT)
+                .show();
+          }
+
+          /** Called when full screen content is dismissed. */
+          @Override
+          public void onAdDismissedFullScreenContent() {
+            // Don't forget to set the ad reference to null so you
+            // don't show the ad a second time.
+            rewardedInterstitialAd = null;
+            Log.d(TAG, "onAdDismissedFullScreenContent");
+            Toast.makeText(MainActivity.this, "onAdDismissedFullScreenContent", Toast.LENGTH_SHORT)
+                .show();
+            // Preload the next rewarded interstitial ad.
+            loadRewardedInterstitialAd();
+          }
+        });
+
+    Activity activityContext = MainActivity.this;
+    rewardedInterstitialAd.show(
+        activityContext,
+        new OnUserEarnedRewardListener() {
+          @Override
+          public void onUserEarnedReward(@NonNull RewardItem rewardItem) {
+            // Handle the reward.
+            Log.d(TAG, "The user earned the reward.");
+            addCoins(rewardItem.getAmount());
+          }
+        });
+  }
+}
+
+
+
+
+
+
+
+java/admob/fullscreennativeexample/app/src/main/res/xml/network_security_config.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+  <debug-overrides>
+    <trust-anchors>
+      <!-- Trust user added CAs while debuggable only -->
+      <certificates src="user" />
+      <certificates src="system" />
+    </trust-anchors>
+  </debug-overrides>
+</network-security-config>
+
+
+
+java/admob/fullscreennativeexample/app/src/main/res/values/strings.xml
+<resources>
+    <string name="app_name" translatable="false">AdMob Fullscreen Native Example</string>
+    <string name="ad_attribution" translatable="false">Ad</string>
+    <string name="button_refresh_ad">Refresh Ad</string>
+    <string name="video_status_text">Video status: </string>
+</resources>
+
+
+java/admob/fullscreennativeexample/app/src/main/res/layout/video_row_item.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:gravity="center_vertical">
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical">
+    </com.google.android.exoplayer2.ui.PlayerView>
+
+    <View
+        android:id="@+id/overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>
+
+
+
+java/admob/fullscreennativeexample/app/src/main/res/layout/video_feeds_activity.xml
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sample_main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="none">
+
+    <FrameLayout
+        android:id="@+id/video_feed_content_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" />
+</LinearLayout>
+
+
+
+java/admob/fullscreennativeexample/app/src/main/res/layout/recycler_view_frag.xml
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+java/admob/fullscreennativeexample/app/src/main/res/layout/ad_unified.xml
+
+
+
+
+
+<com.google.android.gms.ads.nativead.NativeAdView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/native_ad_view"
+    android:scrollbars="none"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@android:color/black"
+        android:minHeight="50dp"
+        android:orientation="vertical"
+        android:scrollbars="none">
+
+        <com.google.android.gms.ads.nativead.MediaView
+            android:id="@+id/ad_media"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ad_app_icon"
+            android:layout_width="@dimen/icon_layout_width"
+            android:layout_height="@dimen/icon_layout_height"
+            android:layout_marginTop="@dimen/icon_layout_margin_top"
+            android:layout_marginEnd="@dimen/icon_layout_margin_end"
+            android:adjustViewBounds="true"
+            android:background="@drawable/bg_circle"
+            android:outlineProvider="background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/ad_badge"
+            style="@style/AppTheme.AdAttribution"
+            android:layout_marginStart="@dimen/ad_badge_margin_start"
+            android:layout_marginBottom="@dimen/ad_badge_margin_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/ad_headline"
+            android:layout_width="@dimen/headline_width"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/headline_margin_start"
+            android:background="@color/browser_actions_bg_grey"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/browser_actions_text_color"
+            android:textSize="@dimen/headline_text_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/ad_badge"
+            app:layout_constraintStart_toEndOf="@id/ad_badge" />
+
+        <TextView
+            android:id="@+id/ad_body"
+            android:layout_width="@dimen/body_width"
+            android:layout_height="wrap_content"
+            android:background="@color/browser_actions_bg_grey"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/browser_actions_text_color"
+            android:textSize="@dimen/body_text_size"
+            app:layout_constraintStart_toStartOf="@id/ad_headline"
+            app:layout_constraintTop_toBottomOf="@id/ad_headline" />
+
+        <Button
+            android:id="@+id/ad_call_to_action"
+            android:layout_width="@dimen/cta_button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/cta_button_margin_top"
+            android:gravity="center"
+            android:textSize="@dimen/cta_button_text_size"
+            app:layout_constraintStart_toStartOf="@id/ad_badge"
+            app:layout_constraintTop_toBottomOf="@id/ad_badge" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.gms.ads.nativead.NativeAdView>
